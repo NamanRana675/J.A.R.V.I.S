@@ -1,0 +1,10 @@
+{
+  "name": "JARVIS Interface",
+  "description": "Futuristic AI personal assistant HUD with voice, vision, and Firebase integration.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
