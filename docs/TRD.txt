@@ -1,0 +1,14 @@
+2. Updated Technical Requirements Document (TRD)
+Project Name: JARVIS Cloud Controller
+
+Architecture: Cloud-Based Controller (VPS) + Local Worker Node
+
+A. Tech Stack
+
+Hosting: Virtual Private Server (VPS) (e.g., DigitalOcean, AWS EC2) running Ubuntu.
+
+Brain: Google Gemini 1.5 Pro (via Google AI Studio API).
+
+Bridge: Slack Bolt framework (Socket Mode ensures security without public ports).
+
+Language: Python 3.12+
