@@ -1,5 +1,5 @@
-import React from "react";
-import { Panel } from "./Panel";
+
+import { Panel } from "./Panel.tsx";
 import { Activity, Power, Thermometer, ShieldAlert, Wifi, Cpu, Database } from "lucide-react";
 
 export function SystemOverview() {

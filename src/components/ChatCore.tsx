@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Mic, Image as ImageIcon, Send, X, Loader2 } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { Mic, Image as ImageIcon, Send, Loader2 } from "lucide-react";
 
 export function ChatCore() {
   const [input, setInput] = useState("");
@@ -92,9 +92,9 @@ export function ChatCore() {
 
       {/* Modes & Input */}
       <div className="flex items-center space-x-2 mb-2">
-         <button onClick={() => setMode("standard")} className={`text-[10px] uppercase font-mono px-2 py-1 rounded border transition-colors ${mode === "standard" ? "border-jarvis-cyan bg-jarvis-cyan/20 text-jarvis-cyan" : "border-jarvis-border text-jarvis-text/60"}`}>Standard</button>
-         <button onClick={() => setMode("high-thinking")} className={`text-[10px] uppercase font-mono px-2 py-1 rounded border transition-colors ${mode === "high-thinking" ? "border-purple-500 bg-purple-500/20 text-purple-400" : "border-jarvis-border text-jarvis-text/60"}`}>High Thinking</button>
-         <button onClick={() => setMode("search")} className={`text-[10px] uppercase font-mono px-2 py-1 rounded border transition-colors ${mode === "search" ? "border-emerald-500 bg-emerald-500/20 text-emerald-400" : "border-jarvis-border text-jarvis-text/60"}`}>Network Search</button>
+         <button type="button" onClick={() => setMode("standard")} className={`text-[10px] uppercase font-mono px-2 py-1 rounded border transition-colors ${mode === "standard" ? "border-jarvis-cyan bg-jarvis-cyan/20 text-jarvis-cyan" : "border-jarvis-border text-jarvis-text/60"}`}>Standard</button>
+         <button type="button" onClick={() => setMode("high-thinking")} className={`text-[10px] uppercase font-mono px-2 py-1 rounded border transition-colors ${mode === "high-thinking" ? "border-purple-500 bg-purple-500/20 text-purple-400" : "border-jarvis-border text-jarvis-text/60"}`}>High Thinking</button>
+         <button type="button" onClick={() => setMode("search")} className={`text-[10px] uppercase font-mono px-2 py-1 rounded border transition-colors ${mode === "search" ? "border-emerald-500 bg-emerald-500/20 text-emerald-400" : "border-jarvis-border text-jarvis-text/60"}`}>Network Search</button>
       </div>
 
       <div className="relative flex items-center bg-jarvis-panel border border-jarvis-border/50 rounded-lg p-3">
@@ -107,16 +107,16 @@ export function ChatCore() {
           className="flex-1 bg-transparent outline-none text-[14px] text-white placeholder-jarvis-text/40 font-sans ml-2"
         />
         <div className="flex items-center space-x-3 pr-2">
-           <button title="Upload Image" className="text-jarvis-text/60 hover:text-jarvis-cyan transition-colors">
+           <button type="button" title="Upload Image" className="text-jarvis-text/60 hover:text-jarvis-cyan transition-colors">
               <ImageIcon size={18} />
            </button>
-           <button 
+           <button type="button"
              onClick={() => setIsListening(!isListening)}
              className={`transition-colors ${isListening ? "text-red-500 animate-pulse" : "text-jarvis-text/60 hover:text-jarvis-cyan"}`}
            >
               <Mic size={18} />
            </button>
-           <button onClick={sendMessage} className="text-jarvis-cyan hover:text-white transition-colors">
+           <button type="button" onClick={sendMessage} className="text-jarvis-cyan hover:text-white transition-colors">
               <Send size={18} />
            </button>
         </div>

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Panel } from "./Panel";
+import { Panel } from "./Panel.tsx";
 import { ScanSearch, Upload, X, Loader2 } from "lucide-react";
 
 export function ImageVision() {
@@ -33,7 +33,7 @@ export function ImageVision() {
       });
       const data = await res.json();
       setResult(data.text);
-    } catch (e) {
+    } catch (_e) {
       setResult("ERROR: Visual synthesis failed.");
     }
     setLoading(false);
@@ -57,7 +57,7 @@ export function ImageVision() {
               <img src={preview} alt="Upload" className="w-full h-32 object-cover opacity-80" />
               <div className="absolute inset-0 bg-jarvis-cyan/10 pointer-events-none group-hover:bg-transparent transition-colors" />
               
-              <button 
+              <button type="button"
                  onClick={() => { setFile(null); setPreview(null); setResult(""); }}
                  className="absolute top-2 right-2 bg-black/50 text-white p-1 rounded-full hover:bg-black/80"
               >
@@ -65,7 +65,7 @@ export function ImageVision() {
               </button>
 
               {!result && !loading && (
-                 <button 
+                 <button type="button"
                     onClick={analyzeImage}
                     className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-jarvis-panel border border-jarvis-cyan text-jarvis-cyan text-[10px] px-3 py-1 font-mono uppercase rounded-full hover:bg-jarvis-cyan/20 transition-colors"
                  >

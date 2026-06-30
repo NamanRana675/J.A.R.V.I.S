@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { collection, query, onSnapshot, addDoc, serverTimestamp, orderBy } from "firebase/firestore";
-import { db, auth } from "../lib/firebase";
-import { Panel } from "./Panel";
-import { Calendar, Plus, Trash2 } from "lucide-react";
+import { db, auth } from "../lib/firebase.ts";
+import { Panel } from "./Panel.tsx";
+import { Calendar, Plus } from "lucide-react";
 
 export function AgendaPanel() {
   const [tasks, setTasks] = useState<{ id: string; title: string; time: string }[]>([]);
@@ -14,7 +14,7 @@ export function AgendaPanel() {
     if (!auth.currentUser) return;
     const q = query(collection(db, `users/${auth.currentUser.uid}/agenda`), orderBy("createdAt", "asc"));
     const unsub = onSnapshot(q, (snap) => {
-       const docs = snap.docs.map(d => ({ id: d.id, ...d.data() } as any));
+       const docs = snap.docs.map(d => ({ id: d.id, ...d.data() } as unknown));
        setTasks(docs);
        setLoading(false);
     });

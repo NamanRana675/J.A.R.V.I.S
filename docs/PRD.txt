@@ -1,0 +1,16 @@
+1. Updated Product Requirements Document (PRD)
+Project Name: JARVIS (Cloud-Hosted Autonomous Business Agent)
+
+Version: 2.0 (Cloud-First)
+
+A. Product Vision To build a 24/7 autonomous, AI-driven business agent that operates from the cloud to manage e-commerce and content operations, ensuring business continuity regardless of local hardware status.
+
+B. Key Shift (Version 1.1 -> 2.0) * Infrastructure: Migration from local-only execution to a Cloud-Server (VPS) model.
+
+Availability: 24/7 uptime for business logic (SEO, email, data analysis).
+
+Hybrid Execution: Cloud Controller handles APIs; Local Worker handles desktop-specific tasks (only when the laptop is online).
+
+C. Updated User Stories * As an Entrepreneur, I want JARVIS to monitor my e-commerce sales and draft reports in the cloud 24/7.
+
+As a Business Owner, I want my laptop to sync with JARVIS only when I need local file management, saving battery and resources.
