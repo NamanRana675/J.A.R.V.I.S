@@ -1,3 +1,4 @@
+import process from "node:process";
 import express from "express";
 import path from "path";
 import { createServer as createViteServer } from "vite";
@@ -16,10 +17,10 @@ const upload = multer();
 // 1. Core Chat/Search/Thinking Endpoint
 app.post("/api/chat", async (req, res) => {
   try {
-    const { message, tools, mode } = req.body;
+    const { message, tools: _tools, mode } = req.body;
     let model = "gemini-3.5-flash"; // default
-    let systemInstruction = "You are JARVIS, a highly advanced artificial intelligence created to assist the user. You are polite, efficient, and direct. Provide intelligent suggestions, be honest about limitations, and maintain a futuristic demeanor.";
-    let config: any = { systemInstruction };
+    const systemInstruction = "You are JARVIS, a highly advanced artificial intelligence created to assist the user. You are polite, efficient, and direct. Provide intelligent suggestions, be honest about limitations, and maintain a futuristic demeanor.";
+    const config: Record<string, unknown> = { systemInstruction };
     
     if (mode === "high-thinking") {
       model = "gemini-3.1-pro-preview";
@@ -38,9 +39,9 @@ app.post("/api/chat", async (req, res) => {
     });
 
     res.json({ text: response.text });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Chat Error:", error);
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: (error as Error).message });
   }
 });
 
@@ -66,8 +67,8 @@ app.post("/api/tts", async (req, res) => {
     }
     
     res.json({ audio: audioBase64 || response.text });
-  } catch (error: any) {
-    res.status(500).json({ error: error.message });
+  } catch (error: unknown) {
+    res.status(500).json({ error: (error as Error).message });
   }
 });
 
@@ -89,8 +90,8 @@ app.post("/api/vision", upload.single("image"), async (req, res) => {
      });
      
      res.json({ text: response.text });
-  } catch (err: any) {
-     res.status(500).json({ error: err.message });
+  } catch (err: unknown) {
+     res.status(500).json({ error: (err as Error).message });
   }
 });
 
@@ -104,7 +105,7 @@ async function startServer() {
   } else {
     const distPath = path.join(process.cwd(), "dist");
     app.use(express.static(distPath));
-    app.get("*", (req, res) => {
+    app.get("*", (_req, res) => {
       res.sendFile(path.join(distPath, "index.html"));
     });
   }

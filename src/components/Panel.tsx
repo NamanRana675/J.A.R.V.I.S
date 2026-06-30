@@ -1,5 +1,5 @@
 import React from "react";
-import { cn } from "../lib/utils";
+import { cn } from "../lib/utils.ts";
 
 interface PanelProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;

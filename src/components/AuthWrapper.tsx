@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { signInWithPopup, GoogleAuthProvider, onAuthStateChanged, User } from "firebase/auth";
-import { auth } from "../lib/firebase";
-import { CenterRing } from "./CenterRing";
+import { auth } from "../lib/firebase.ts";
+import { CenterRing } from "./CenterRing.tsx";
 
 export function AuthWrapper({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
@@ -47,7 +47,7 @@ export function AuthWrapper({ children }: { children: React.ReactNode }) {
                <h1 className="text-4xl font-sans tracking-[0.2em] text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] mb-2">JARVIS</h1>
                <p className="text-jarvis-cyan font-mono text-sm tracking-widest mb-8">JUST A RATHER VERY INTELLIGENT SYSTEM</p>
                
-               <button 
+               <button type="button"
                  onClick={login}
                  className="px-8 py-3 bg-jarvis-panel border border-jarvis-cyan text-jarvis-cyan font-mono tracking-widest hover:bg-jarvis-cyan hover:text-black transition-all rounded"
                >

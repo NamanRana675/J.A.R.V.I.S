@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { AuthWrapper } from "./components/AuthWrapper";
-import { CenterRing } from "./components/CenterRing";
-import { AgendaPanel } from "./components/AgendaPanel";
-import { SystemOverview, SmartDevices } from "./components/SystemPanels";
-import { ChatCore } from "./components/ChatCore";
-import { ImageVision } from "./components/ImageVision";
-import { DevModePrompt } from "./components/DevModePrompt";
+import { useState } from "react";
+import { AuthWrapper } from "./components/AuthWrapper.tsx";
+import { CenterRing } from "./components/CenterRing.tsx";
+import { AgendaPanel } from "./components/AgendaPanel.tsx";
+import { SystemOverview, SmartDevices } from "./components/SystemPanels.tsx";
+import { ChatCore } from "./components/ChatCore.tsx";
+import { ImageVision } from "./components/ImageVision.tsx";
+import { DevModePrompt } from "./components/DevModePrompt.tsx";
 import { Mic, MessageSquare, ListTodo, Calendar, FolderHeart, CodeXml, ScanSearch, Settings as SettingsIcon } from "lucide-react";
-import { auth } from "./lib/firebase";
+import { auth } from "./lib/firebase.ts";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("HOME");
@@ -24,8 +24,8 @@ export default function App() {
   ];
 
   const now = new Date();
-  const timeFormatted = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  const dateFormatted = now.toLocaleDateString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+
 
   return (
     <AuthWrapper>
@@ -34,7 +34,7 @@ export default function App() {
          <div className="w-24 bg-jarvis-panel/50 border-r border-jarvis-border/50 flex flex-col items-center py-6 backdrop-blur-sm z-10">
             <div className="space-y-8 flex-1 w-full mt-10">
                {sidebarLinks.map((link) => (
-                 <button 
+                 <button type="button"
                    key={link.name} 
                    onClick={() => setActiveTab(link.name)}
                    className={`w-full flex flex-col items-center space-y-2 py-2 transition-colors ${activeTab === link.name ? "text-jarvis-cyan border-r-2 border-jarvis-cyan bg-jarvis-cyan/10" : "text-jarvis-text/60 hover:text-jarvis-cyan"}`}
@@ -67,7 +67,7 @@ export default function App() {
                   <span className="w-1.5 h-1.5 rounded-full bg-green-400 shadow-[0_0_8px_#4ade80]" />
                   SECURE: ENCRYPTED VOICE PROTOCOL ACTIVE
                   {auth.currentUser && (
-                     <button onClick={() => auth.signOut()} className="text-[9px] text-green-400 hover:text-white ml-2 underline underline-offset-2">SIGN OUT</button>
+                     <button type="button" onClick={() => auth.signOut()} className="text-[9px] text-green-400 hover:text-white ml-2 underline underline-offset-2">SIGN OUT</button>
                   )}
                </div>
             </header>

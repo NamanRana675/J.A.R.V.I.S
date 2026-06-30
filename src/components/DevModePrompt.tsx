@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Panel } from "./Panel";
+import { useState } from "react";
+import { Panel } from "./Panel.tsx";
 import { Terminal, Copy, CheckCircle } from "lucide-react";
 
 export function DevModePrompt() {
@@ -36,7 +36,7 @@ Acknowledge initialization with: "System Online. Good Evening. How may I assist 
     <Panel title="DEV MODE: SYSTEM PROMPT" icon={<Terminal size={14} />} className="col-span-2 row-span-2">
       <div className="flex justify-between items-center mb-2">
          <span className="text-[10px] text-jarvis-text/60 font-mono">jarvis_core_directive_v2.0.md</span>
-         <button onClick={copyToClipboard} className="text-jarvis-cyan hover:text-white transition-colors">
+         <button type="button" onClick={copyToClipboard} className="text-jarvis-cyan hover:text-white transition-colors">
             {copied ? <CheckCircle size={14}/> : <Copy size={14} />}
          </button>
       </div>
